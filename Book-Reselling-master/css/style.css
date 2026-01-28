@@ -1,0 +1,1418 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+/* Global variables for colors, border, and shadow */
+:root {
+   --yellow: #FBF97A; /* Light yellow color */
+   --purple: #9e97ab; /* Medium purple color */
+   --red: #c0392b; /* Red color */
+   --orange: #f39c12; /* Orange color */
+   --black: #333; /* Black color */
+   --dark_black:#53567A;
+   --white: #c0aecc; /* Light white color */
+   --light-color: #666; /* Light gray color */
+   --light-white: #ccc; /* Medium light gray color */
+   --light-bg: #f5f5f5; /* Light background color */
+
+   --border: .1rem solid var(--black); /* Thin border using black color */
+   --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1); /* Thin border using black color */
+}
+
+/* Reset browser styles */
+* {
+   font-family: 'Rubik', sans-serif; /* Set font to Rubik */
+   margin:0; padding:0; /* Remove margins and padding */
+   box-sizing: border-box; /* Include padding and border in element's total width and height */
+   outline: none; border:none; /* Remove default outlines and borders */
+   text-decoration: none; /* Remove underlines from links */
+   transition:all .2s linear; /* Apply smooth transitions to all properties */
+}
+
+/* Select all elements, and their selection color */
+*::selection{
+   /* Set yellow background color for selection */
+   background-color: var(--yellow);
+   /* Set white text color for selection */
+   color:var(--white);
+}
+
+/* Adjust scrollbar width & height */
+*::-webkit-scrollbar {
+   height: .5rem;
+   width: 1rem;
+}
+
+/* customize scrollbar track */
+*::-webkit-scrollbar-track {
+   background-color: transparent; /* set to transparent */
+}
+
+/* Scrollbar Thumb Customization */
+*::-webkit-scrollbar-thumb {
+   /* Set Thumb Color to Yellow */
+   background-color: var(--yellow);
+}
+
+/* Set default font size and hide overflow */
+html {
+   font-size: 62.5%;
+   overflow-x: hidden;
+}
+
+section {
+   /* Apply 3rem padding on top and bottom, and 2rem padding on left and right */
+   padding: 3rem 2rem;
+}
+
+.empty{
+   /* Center text in div */
+   text-align: center;
+   /* Set border color */
+   border:var(--border);
+   /* Set background color */
+   background-color: var(--white);
+   /* Set text color */
+   color:var(--red);
+   /* Set font size */
+   font-size: 2rem;
+   /* Adjust padding and size */
+   padding:1.5rem;
+}
+
+/* Message container */
+.message {
+   /* Sticky position */
+   position: sticky;
+   /* Top position */
+   top: 0;
+   /* Center alignment */
+   margin: 0 auto;
+   /* Max width */
+   max-width: 1200px;
+   /* Background color */
+   background-color: var(--white);
+   /* Padding */
+   padding: 2rem;
+   /* Flex container */
+   display: flex;
+   /* Center vertical alignment */
+   align-items: center;
+   /* Space between elements */
+   justify-content: space-between;
+   /* High z-index */
+   z-index: 10000;
+   /* Space between flex items */
+   gap: 1.5rem;
+}
+
+.message span {
+   /* Sets the font size to 2rem */
+   font-size: 2rem;
+
+   /* Sets the text color to black */
+   color: var(--black);
+}
+
+.message i {
+   /* pointer cursor, clickable */
+   cursor: pointer;
+   /* error color, attention needed */
+   color:var(--red);
+   /* larger font size, easier to notice */
+   font-size: 2.5rem;
+}
+
+.message i:hover{
+   /* Rotate chevron icon on hover */
+   transform: rotate(90deg);
+}
+
+.title {
+   /* Center title text */
+   text-align: center;
+   
+   /* Add margin below title */
+   margin-bottom: 2rem;
+   
+   /* Uppercase title text */
+   text-transform: uppercase;
+   
+   /* Set title color */
+   color: var(--black);
+   
+   /* Set title font size */
+   font-size: 4rem;
+}
+
+/* Create a button style with multiple classes */
+.btn,
+.option-btn,
+.delete-btn,
+.white-btn {
+   display: inline-block;
+   margin-top: 1rem;
+   padding: 1rem 3rem;
+   cursor: pointer;
+   color: var(--white);
+   font-size: 1.8rem;
+   border-radius: .5rem;
+   text-transform: capitalize;
+}
+
+/* Changes button background on hover */
+.btn:hover,
+.option-btn:hover,
+.delete-btn:hover {
+   background-color: var(--black);
+}
+
+.white-btn,
+.btn {
+   /* White button color */
+   background-color: var(--yellow);
+}
+
+.option-btn {
+   /* Orange background for button */
+   background-color: var(--orange);
+}
+
+.delete-btn {
+   /* Set background color to red */
+   background-color: var(--red);
+}
+
+.white-btn:hover { /* Changes background and text color on hover */
+   background-color: var(--white); /* Sets background color to white */
+   color:var(--black); /* Sets text color to black */
+}
+
+.heading {
+   /* min-height 30vh, adjusts heading size */
+   min-height: 30vh;
+   
+   /* flex container */
+   display: flex;
+   flex-flow: column;
+   
+   /* aligns and centers content */
+   align-items: center;
+   justify-content: center;
+   
+   /* adds space between flex items */
+   gap: 1rem;
+   
+   /* sets background image and options */
+   background: url(../images/about_heading.png) no-repeat;
+   background-size: cover;
+   background-position: center;
+   
+   /* center text alignment */
+   text-align: center;
+}
+
+.heading h3{
+   font-size: 5rem;
+   color:var(--black);
+   text-transform: uppercase;
+}
+
+.heading p{
+   font-size: 2.5rem;
+   color:var(--light-color);
+}
+
+.heading p a{ /* Styling heading link on hover */
+   color:var(--yellow);
+}
+
+.heading p a:hover { /* on hover underline */
+   text-decoration: underline;
+}
+
+/* define animation keyframes */
+@keyframes fadeIn {
+   0%{
+      /* set initial translation */
+      transform: translateY(1rem);
+      /* set initial opacity */
+      opacity: .2s;
+   }
+}
+
+/* Set min height, bg color, and flex container properties */
+.form-container{
+   min-height: 100vh;
+   background-color: transparent;;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding:2rem;
+}
+
+.form-container form{
+   /* Center padding and width */
+   padding:2rem;
+   width: 50rem;
+   
+   /* Border radius for rounded corners */
+   border-radius: .5rem;
+   
+   /* Add box shadow */
+   box-shadow: var(--box-shadow);
+   
+   /* Add border */
+   border:var(--border);
+   
+   /* Set background color and text alignment */
+   background-color: var(--white);
+   text-align: center;
+}
+
+.form-container form h3{
+   /* Font size: 3rem, margin bottom: 1rem, text transform: uppercase, color: black */
+   font-size: 3rem;
+   margin-bottom: 1rem;
+   text-transform: uppercase;
+   color:var(--black);
+}
+
+.form-container form .box {
+   /* Full width of parent */
+   width: 100%;
+   /* Curved borders */
+   border-radius: .5rem;
+   /* Light background color */
+   background-color: transparent;
+   /* Padding around content */
+   padding: 1.2rem 1.4rem;
+   /* Font size */
+   font-size: 1.8rem;
+   /* Text color */
+   color: var(--black);
+   /* Border style */
+   border: var(--border);
+   /* Margin at the bottom */
+   margin: 1rem 0;
+}
+
+.form-container form p{
+   /* Style form paragraphs */
+   padding-top: 1.5rem; /* Add vertical spacing */
+   font-size: 2rem; /* Set large font size */
+   color:var(--black); /* Apply black color */
+}
+
+.form-container form p a{
+   color:var(--purple); /* Sets link color to purple */
+}
+
+/* Set link hover state underline */
+.form-container form p a:hover{
+   text-decoration: underline;
+}
+
+.header .header-1{
+   /* Apply light background color */
+   background-color: var(--light-bg);
+}
+
+.header .header-1 .flex{
+   /* add padding for header */
+   padding:2rem;
+   
+   /* create a flex container */
+   display: flex;
+   align-items: center; /* center items vertically */
+   justify-content: space-between; /* evenly distribute items horizontally */
+   
+   /* limit max width */
+   max-width: 1200px;
+   
+   /* center the header */
+   margin:0 auto;
+   
+   /* align text to right */
+   text-align: right;
+}
+
+.header .header-2{
+   /* white background, box shadow */
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+}
+
+.header .header-2.active{
+   /* Position fixed and stretched to the viewport */
+   position: fixed;
+   top:0; left:0; right:0;
+   
+   /* Stack order with other elements */
+   z-index: 1000;
+}
+
+.header .header-2 .flex{
+   /*Padding, top & bottom: 2rem, left & right: 2rem */
+   padding:2rem;
+
+   /*Display as flex */
+   display: flex;
+
+   /*Center items vertically */
+   align-items: center;
+
+   /*Distribute items horizontally */
+   justify-content: space-between;
+
+   /*Maximum width: 1200px */
+   max-width: 1200px;
+
+   /*Center the element */
+   margin:0 auto;
+
+   /*Relative positioning */
+   position: relative;
+}
+
+.header .header-1 .flex .share a{
+   /* set font size to 2.5rem */
+   font-size: 2.5rem;
+   /* add margin right of 1.5rem */
+   margin-right: 1.5rem;
+   /* set text color to var(--black) */
+   color:var(--black);
+}
+
+.header .header-1 .flex .share a:hover {
+   color:var(--dark_black); /* change color on hover */
+}
+
+/* Style header elements */
+.header .header-1 .flex p {
+   font-size: 2rem; /* Set font size */
+   color: var(--light-color); /* Set font color */
+}
+
+.header .header-1 .flex p a {
+   /* Set text color to purple */
+   color:var(--dark_black);
+}
+
+.header .header-1 .flex p a:hover {
+   /* Add underline on hover */
+   text-decoration: underline;
+}
+
+.header .header-2 .flex .logo {
+   /* Set logo font size to 2.5rem */
+   font-size: 2.5rem;
+   
+   /* Set logo color to the variable --purple */
+   color: var(--black);
+}
+
+.header .header-2 .flex .navbar a {
+   /* Apply spacing around anchor tags */
+   margin: 0 1rem;
+
+   /* Adjust font size for better readability */
+   font-size: 2rem;
+
+   /* Set anchor color to a lighter color for better contrast */
+   color: var(--black);
+}
+
+.header .header-2 .flex .navbar a:hover{
+   /* Changes color to purple and adds underline on hover */
+   color:var(--light-color);
+   text-decoration: underline;
+}
+
+.header .header-2 .flex .icons > *{
+   /* Set icon font size to 2.5rem */
+   font-size: 2.5rem;
+
+   /* Set icon color to --black */
+   color:var(--black);
+
+   /* Enable cursor pointer on icons */
+   cursor: pointer;
+
+   /* Add 1.5rem margin on the left */
+   margin-left: 1.5rem;
+}
+
+.header .header-2 .flex .icons > *:hover{ /* hover over icon elements */
+   color:var(--black); /* change icon color to purple */
+}
+
+/* Hide the menu button by default */
+#menu-btn {
+   display: none;
+}
+
+.header .header-2 .flex .user-box{
+   /* position absolute */
+   position: absolute;
+   /* position at 120% from top */
+   top:120%;
+   /* position 2rem from right */
+   right:2rem;
+   
+   /* white background color */
+   background-color: var(--white);
+   /* border radius 0.5rem */
+   border-radius: .5rem;
+   /* box shadow */
+   box-shadow: var(--box-shadow);
+   /* border */
+   border:var(--border);
+   
+   /* padding 2rem */
+   padding:2rem;
+   /* center text alignment */
+   text-align: center;
+   
+   /* width 30rem */
+   width: 30rem;
+   /* display none initially */
+   display: none;
+   /* fadeIn animation */
+   animation: fadeIn .2s linear;
+}
+
+.header .header-2 .flex .user-box p{
+   /* font size: 2rem, color: light */
+   font-size: 2rem;
+   color:var(--light-color);
+   /* margin bottom: 1.5rem */
+   margin-bottom: 1.5rem;
+}
+
+.header .header-2 .flex .user-box p{
+   /* set font size to 2rem */
+   font-size: 2rem;
+   
+   /* set color to --light-color */
+   color:var(--light-color);
+   
+   /* add margin below */
+   margin-bottom: 1.5rem;
+}
+
+.header .header-2 .flex .user-box p span{
+   /* Sets text color to var(--black) */
+   color:var(--black);
+}
+
+.header .header-2 .flex .user-box .delete-btn{
+   /* Set margin top to 0 for delete button */
+   margin-top: 0;
+}
+
+/* Gradient Background */
+.home {
+   min-height: 70vh;
+   background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(../images/men-reading.jpg) no-repeat;
+   background-size: cover;
+   background-position: center;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.home .content{
+   /* Centers text alignment */
+   text-align: center;
+   /* Sets width of the content box */
+   width: 60rem;
+}
+
+.home .content h3 {
+   /* Large heading text size */
+   font-size: 5.5rem;
+   
+   /* White heading text color */
+   color: var(--white);
+   
+   /* Uppercase heading text */
+   text-transform: uppercase;
+}
+
+.home .content p {
+   /* Font size: 1.8rem */
+   font-size: 1.8rem;
+
+   /* Text color: light white */
+   color: var(--light-white);
+
+   /* Padding: 1rem 0 */
+   padding: 1rem 0;
+
+   /* Line height: 1.5 */
+   line-height: 1.5;
+}
+
+.products .box-container{
+   /* max-width and center alignment */
+   max-width: 1200px;
+   margin:0 auto;
+
+   /* display as grid and specify column template */
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 30rem);
+
+   /* vertically align items to start and justify to center */
+   align-items: flex-start;
+   justify-content: center;
+
+   /* specify gap between grid items */
+   gap:1.5rem;
+}
+
+.products .box-container .box {
+   /* border radius, box-shadow */
+   border-radius: .5rem;
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   
+   /* padding, text alignment */
+   padding:2rem;
+   text-align: center;
+   
+   /* border, position */
+   border:var(--border);
+   position: relative;
+}
+
+.products .box-container .box .image{
+   /* set height of product image */
+   height: 30rem;
+}
+
+/* box name style */
+.products .box-container .box .name{
+   padding:1rem 0; /* vertically center name */
+   font-size: 2rem; /* large font size */
+   color:var(--black); /* black font color */
+}
+
+.products .box-container .box .qty {
+   /* Full width box, with padding and rounded borders */
+   width: 100%;
+   padding: 1.2rem 1.4rem;
+   border-radius: .5rem;
+   border: var(--border);
+
+   /* Vertical margin between quantity box and other elements */
+   margin: 1rem 0;
+
+   /* Large font size for user input */
+   font-size: 2rem;
+}
+
+.products .box-container .box .price {
+   /* absolute positioning */
+   position: absolute;
+   top: 1rem; left: 1rem;
+   
+   /* rounded corners */
+   border-radius: .5rem;
+   
+   /* internal spacing */
+   padding: 1rem;
+   
+   /* text formatting */
+   font-size: 2.5rem;
+   color: var(--white);
+   
+   /* background color */
+   background-color: var(--orange);
+}
+
+.about .flex{
+   /* max width container */
+   max-width: 1200px;
+   
+   /* center alignment */
+   margin:0 auto;
+   
+   /* display flex items */
+   display: flex;
+   
+   /* vertically center items */
+   align-items: center;
+   
+   /* wrap items on new line */
+   flex-wrap: wrap;
+}
+
+/* set image to 100% width, grow by 100% when container width increases, shrink by 100% when container width decreases, max width set to 40rem */
+.about .flex .image {
+   flex: 1 1 40rem;
+}
+
+.about .flex .image img{
+   /* Adjust image width to 100% */
+   width: 100%;
+}
+
+/* flex-content styles */
+.about .flex .content{
+   /* make the content flex: 1, auto-filling */
+   flex:1 1 40rem;
+   /* padding inside content */
+   padding:2rem;
+   /* light background color */
+   background-color: var(--light-bg);
+}
+
+.about .flex .content h3{
+   /* Font size, color, transform */
+   font-size: 3rem;
+   color:var(--black);
+   text-transform: uppercase;
+}
+
+.about .flex .content p{
+   /* padding for paragraph */
+   padding:1rem 0;
+   /* line height for paragraph */
+   line-height: 2;
+   /* font size for paragraph */
+   font-size: 1.7rem;
+   /* font color for paragraph */
+   color:var(--light-color);
+}
+
+.home-contact {
+   /* Set background to black */
+   background-color: var(--purple);
+}
+
+.home-contact .content{
+   /* Max-width for contact content */
+   max-width: 60rem;
+   /* Centered alignment for text */
+   text-align: center;
+   /* Horizontal centering of the content */
+   margin:0 auto;
+}
+
+.home-contact .content h3 {
+   /* Large heading size */
+   font-size: 3rem;
+   
+   /* Convert text to uppercase */
+   text-transform: uppercase;
+   
+   /* White color */
+   color:var(--white);
+}
+
+.home-contact .content p {
+   /* add padding to top and bottom */
+   padding: 1rem 0;
+   /* adjust line height for readability */
+   line-height: 1.5;
+   /* set text color to a light white */
+   color: var(--light-white);
+   /* set font size to 1.7rem */
+   font-size: 1.7rem;
+}
+
+/* Define background color for reviews */
+.reviews{
+   background-color: var(--light-bg);
+}
+
+.reviews .box-container {
+   /* Max container width */
+   max-width: 1200px;
+
+   /* Center container */
+   margin: 0 auto;
+
+   /* Grid layout */
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+
+   /* Align and justify grid items */
+   align-items: center;
+   justify-content: center;
+
+   /* Gap between grid items */
+   gap: 1.5rem;
+}
+
+.reviews .box-container .box {
+   /* Layout & Alignment */
+   flex: 1 1 30rem;
+   /* Allows boxes to grow/shrink, starting at 30rem */
+   display: flex;
+   /* Makes the box itself a flex container */
+   flex-direction: column;
+   /* Stacks internal content (stars, text, user) vertically */
+   justify-content: space-between;
+   /* Pushes content apart so bottoms align */
+
+   /* Visual Styles */
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   border: var(--border);
+   border-radius: .5rem;
+   padding: 2rem;
+   text-align: center;
+}
+
+/* Style box image */
+.reviews .box-container .box img{
+   height: 10rem; /* Set image height */
+   width: 10rem; /* Set image width */
+   border-radius: 50%; /* Create circular border */
+}
+
+.reviews .box-container .box p {
+   /* Style the paragraph within a box */
+   padding: 1rem 0;
+   line-height: 2;
+   color: var(--light-color);
+   font-size: 1.5rem;
+}
+
+.reviews .box-container .box .stars{
+   /* light background color */
+   background-color: var(--light-bg);
+   
+   /* display as inline block */
+   display: inline-block;
+   
+   /* margin at top and bottom */
+   margin:.5rem 0;
+   
+   /* border radius */
+   border-radius: .5rem;
+   
+   /* border style */
+   border:var(--border);
+   
+   /* padding inside the box */
+   padding:.5rem 1.5rem;
+}
+
+.reviews .box-container .box .stars i {
+   /* Set star size, color, and margin */
+   font-size: 1.7rem;
+   color: var(--orange);
+   margin: .2rem;
+}
+
+.reviews .box-container .box h3 {
+   /* Set font size to 2rem */
+   font-size: 2rem;
+
+   /* Set text color to --black */
+   color: var(--black);
+
+   /* Add margin-top of 1rem */
+   margin-top: 1rem;
+}
+
+.authors .box-container{
+   /* Max container width */
+   max-width: 1200px;
+   /* Center container */
+   margin:0 auto;
+   /* Grid layout */
+   display: grid;
+   /* Adjust columns based on container width */
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+   /* Align items vertically */
+   align-items: center;
+   /* Space between items */
+   gap:1.5rem;
+   /* Justify content horizontally */
+   justify-content: center;
+}
+
+.authors .box-container .box{
+   /* Relative positioning */
+   position: relative;
+   
+   /* Centered text alignment */
+   text-align: center;
+   
+   /* Box border */
+   border:var(--border);
+   
+   /* Box shadow */
+   box-shadow: var(--box-shadow);
+   
+   /* Overflow hidden */
+   overflow: hidden;
+   
+   /* Rounded border */
+   border-radius: .5rem;
+}
+
+.authors .box-container .box img{
+   width: 100%;
+   height: 40rem;
+   object-fit: cover;
+}
+
+.authors .box-container .box .share{
+   position: absolute;
+   top:0; left:-10rem;
+}
+
+.authors .box-container .box:hover .share{
+   left: 1rem;
+}
+
+.authors .box-container .box .share a{
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.5rem;
+   font-size: 2rem;
+   background-color: var(--white);
+   border:var(--border);
+   display: block;
+   margin-top: 1rem;
+   color:var(--black);
+}
+
+.authors .box-container .box .share a:hover{
+   background-color: var(--black);
+   color:var(--white);
+}
+
+.authors .box-container .box h3{
+   font-size: 2.5rem;
+   color:var(--black);
+   padding:1.5rem;
+   background-color: var(--white);
+}
+
+.contact form{
+   margin:0 auto;
+   background-color: var(--light-bg);
+   border-radius: .5rem;
+   border:var(--border);
+   padding:2rem;
+   max-width: 50rem;
+   margin:0 auto;
+   text-align: center;
+}
+
+.contact form h3{
+   font-size: 2.5rem;
+   text-transform: uppercase;
+   margin-bottom: 1rem;
+   color:var(--black);
+}
+
+.contact form .box{
+   margin:1rem 0;
+   width: 100%;
+   border:var(--border);
+   background-color: var(--white);
+   padding:1.2rem 1.4rem;
+   font-size: 1.8rem;
+   color:var(--black);
+   border-radius: .5rem;
+}
+
+.contact form textarea{
+   height: 20rem;
+   resize: none;
+}
+
+.shopping-cart .box-container{
+   max-width: 1200px;
+   margin:0 auto;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 30rem);
+   align-items: center;
+   gap:1.5rem;
+   justify-content: center;
+}
+
+.shopping-cart .box-container .box{
+   text-align: center;
+   padding:2rem;
+   border-radius: .5rem;
+   background-color: var(--white);
+   box-shadow: var(--box-shadow);
+   position: relative;
+   border:var(--border);
+}
+
+.shopping-cart .box-container .box .fa-times{
+   position: absolute;
+   top:1rem; right:1rem;
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.5rem;
+   font-size: 2rem;
+   background-color: var(--red);
+   color:var(--white);
+   border-radius: .5rem;
+}
+
+.shopping-cart .box-container .box .fa-times:hover{
+   background-color: var(--black);
+}
+
+.shopping-cart .box-container .box img{
+   height: 30rem;
+}
+
+.shopping-cart .box-container .box .name {
+   /* padding, font size */
+   padding: 1rem 0;
+   font-size: 2rem;
+   
+   /* font color */
+   color: var(--black);
+}
+
+.shopping-cart .box-container .box .price{
+   /* padding, top-bottom: 1rem, left-right: 0 */
+   padding:1rem 0;
+   
+   /* font size: 2.5rem */
+   font-size: 2.5rem;
+   
+   /* font color: red */
+   color:var(--red);
+}
+
+.shopping-cart .box-container .box input[type="number"]{
+   /* Add margin for input */
+   margin:.5rem 0;
+   
+   /* Set border style and color */
+   border:var(--border);
+   
+   /* Set border radius */
+   border-radius: .5rem;
+   
+   /* Set padding for input */
+   padding:1.2rem 1.4rem;
+   
+   /* Set font size */
+   font-size: 2rem;
+   
+   /* Set text color */
+   color:var(--black);
+   
+   /* Set input width */
+   width: 9rem;
+}
+
+.shopping-cart .box-container .box .sub-total {
+   /* Adjust padding for better spacing */
+   padding-top: 1.5rem;
+
+   /* Set font size and color for the sub-total */
+   font-size: 2rem;
+   color:var(--light-color);
+}
+
+.shopping-cart .box-container .box .sub-total span {
+   /* Set color to variable red */
+   color: var(--red);
+}
+
+/* Container for cart total */
+.shopping-cart .cart-total {
+   /* Maximum width */
+   max-width: 1200px;
+   /* Centering container */
+   margin: 0 auto;
+   /* Border style */
+   border: var(--border);
+   /* Padding for content */
+   padding: 2rem;
+   /* Centering text */
+   text-align: center;
+   /* Margin for space at top */
+   margin-top: 2rem;
+   /* Border radius for rounded corners */
+   border-radius: .5rem;
+}
+
+.shopping-cart .cart-total p {
+   /* Increase font size and color for cart total */
+   font-size: 2.5rem;
+   color:var(--light-color);
+}
+
+.shopping-cart .cart-total p span{
+   /* Apply red color to cart total */
+   color:var(--red);
+}
+
+/* display: flex, flex-wrap: wrap; margin and gap settings */
+.shopping-cart .cart-total .flex {
+   display: flex;
+   flex-wrap: wrap;
+   column-gap: 1rem;
+   margin-top: 1.5rem;
+   justify-content: center;
+}
+
+/* Shopping cart with disabled class */
+.shopping-cart .disabled {
+   /* Disable pointer events */
+   pointer-events: none;
+   
+   /* Reduce opacity */
+   opacity: .5;
+   
+   /* Disable user selection */
+   user-select: none;
+}
+
+.display-order {
+   /* max-width container */
+   max-width: 1200px;
+   /* center container */
+   margin: 0 auto;
+   /* center text */
+   text-align: center;
+   /* no padding at bottom */
+   padding-bottom: 0;
+}
+
+.display-order p {
+   /* light background color */
+   background-color: var(--light-bg);
+   
+   /* black text color */
+   color: var(--black);
+   
+   /* 2rem font size */
+   font-size: 2rem;
+   
+   /* 1rem padding top and bottom, 1.5rem padding left and right */
+   padding: 1rem 1.5rem;
+   
+   /* variable border */
+   border: var(--border);
+   
+   /* inline-block display */
+   display: inline-block;
+   
+   /* .5rem margin */
+   margin: .5rem;
+}
+
+.display-order p span { /* Red text for paragraph spans */
+   color:var(--red);
+}
+
+.display-order .grand-total {
+   /* Adjust top margin for spacing */
+   margin-top: 2rem;
+
+   /* Increase font size for prominence */
+   font-size: 2.5rem;
+
+   /* Change color to light */
+   color:var(--light-color);
+}
+
+.display-order .grand-total span {
+   /* Change grand total text color to red */
+   color: var(--red);
+}
+
+/* Create form with padding and max width */
+.checkout form{
+   max-width: 1200px; /* Limit form width */
+   padding:2rem; /* Add padding around form */
+   margin:0 auto; /* Center form horizontally */
+   border:var(--border); /* Apply border to form */
+   background-color: var(--light-bg); /* Set light background color */
+   border-radius: .5rem; /* Add rounded corners to form */
+}
+
+/* Style the h3 tag */
+.checkout form h3 {
+   /* Align the text to the center */
+   text-align: center;
+   /* Set the bottom margin to 2rem */
+   margin-bottom: 2rem;
+   /* Set the color to a variable */
+   color: var(--black);
+   /* Convert the text to uppercase */
+   text-transform: uppercase;
+   /* Set the font size to 3rem */
+   font-size: 3rem;
+}
+
+.checkout form .flex {
+   /* create a flex container */
+   display: flex;
+
+   /* enable flex items to wrap as needed */
+   flex-wrap: wrap;
+
+   /* specify gap between flex items */
+   gap: 1.5rem;
+}
+
+/* Form input box */
+.checkout form .flex .inputBox{
+   /* Adjusts box width */
+   flex:1 1 40rem;
+}
+
+.checkout form .flex span{
+   /* Set font size to 2rem */
+   font-size: 2rem;
+   
+   /* Set text color to var(--black) */
+   color:var(--black);
+}
+
+/* Define form elements styles */
+.checkout form .flex select,
+.checkout form .flex input {
+   /* Set default border */
+   border: var(--border);
+   /* Set full width */
+   width: 100%;
+   /* Add border radius */
+   border-radius: .5rem;
+   /* Set full width again for better compatibility */
+   width: 100%;
+   /* Set background color */
+   background-color: var(--white);
+   /* Add padding for better user experience */
+   padding: 1.2rem 1.4rem;
+   /* Set font size */
+   font-size: 1.8rem;
+   /* Add margin for better layout */
+   margin: 1rem 0;
+}
+
+.placed-orders .box-container{
+   /* Max container width */
+   max-width: 1200px;
+   /* Center container */
+   margin:0 auto;
+   /* Display flex items */
+   display:flex;
+   /* Allow items to wrap */
+   flex-wrap: wrap;
+   /* Align items vertically */
+   align-items: center;
+   /* Add gap between items */
+   gap:1.5rem;
+}
+
+.placed-orders .box-container .empty{
+   /* Allocate full space in parent */
+   flex:1;
+}
+
+.placed-orders .box-container .box{
+   /* Allow box to grow and shrink */
+   flex:1 1 40rem;
+   /* Apply rounded corners */
+   border-radius: .5rem;
+   /* Apply padding inside box */
+   padding:2rem;
+   /* Set box border */
+   border:var(--border);
+   /* Set box background color */
+   background-color: var(--light-bg);
+   /* Adjust padding */
+   padding:1rem 2rem;
+}
+
+.placed-orders .box-container .box p{
+   /* Styling text within the box */
+   padding:1rem 0;
+   font-size: 2rem;
+   color:var(--light-color);
+}
+
+.placed-orders .box-container .box p span{
+   /* Color the span element with purple color variable */
+   color:var(--purple);
+}
+
+.search-form form{
+   /* max-width for search form */
+   max-width: 1200px;
+   /* center form on page */
+   margin:0 auto;
+   /* display form items in a row */
+   display: flex;
+   /* space between form items */
+   gap:1rem;
+}
+
+.search-form form .btn{
+   /* Removes top margin for search form button */
+   margin-top: 0;
+}
+
+.search-form form .box{
+   /* full width input */
+   width: 100%;
+   /* input padding */
+   padding:1.2rem 1.4rem;
+   /* input border */
+   border:var(--border);
+   /* input font size */
+   font-size: 2rem;
+   /* input color */
+   color:var(--black);
+   /* input background color */
+   background-color: var(--light-bg);
+   /* input border radius */
+   border-radius: .5rem;
+}
+
+
+
+
+
+
+
+
+ 
+
+.footer{
+   /* Apply light background color */
+   background-color: var(--light-bg);
+}
+
+.footer .box-container{
+   /* max width, centered */
+   max-width: 1200px;
+   margin:0 auto;
+   /* display as grid */
+   display: grid;
+   /* responsive columns, auto adjust based on viewport */
+   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+   /* spacing between columns */
+   gap:3rem;
+}
+
+.footer .box-container .box h3{
+   /* Apply uppercase to the text */
+   text-transform: uppercase;
+   /* Set color to the variable --black *//* Add padding bottom of 2rem */
+   color:var(--black);
+   /* Set font size to 2rem */
+   font-size: 2rem;
+   /* Add padding bottom of 2rem */
+   padding-bottom: 2rem;
+}
+/* footer box text style */
+.footer .box-container .box p,
+.footer .box-container .box a{
+   display: block;
+   font-size: 1.7rem;
+   color:var(--light-color);
+   padding:1rem 0;
+}
+
+.footer .box-container .box p i,
+.footer .box-container .box a i{
+   /* set link and paragraph icon color */
+   color:var(--purple);
+   /* add right padding for better spacing */
+   padding-right: .5rem;
+}
+
+.footer .box-container .box a:hover{
+   /* change color and add underline on hover */
+   color:var(--purple);
+   text-decoration: underline;
+}
+
+.footer .credit{
+   /* center align credit text */
+   text-align: center;
+   /* set credit text size to 2rem */
+   font-size: 2rem;
+   /* set credit text color to --light-color */
+   color:var(--light-color);
+   /* add border to the top of credit */
+   border-top: var(--border);
+   /* set top margin to 2.5rem */
+   margin-top: 2.5rem;
+   /* set top padding to 2.5rem */
+   padding-top: 2.5rem;
+}
+/* Set credit text color */
+.footer .credit span{
+   /* Set credit text color */
+   color:var(--yellow);
+}
+
+
+
+
+/* media queries  */
+
+@media (max-width:991px){
+
+   html{
+      font-size: 55%;
+   }
+
+}
+
+@media (max-width:768px){
+
+   #menu-btn{
+      display: inline-block;
+   }
+
+   .header .header-2 .flex .navbar{
+      position: absolute;
+      top:99%; left:0; right:0;
+      background-color: var(--white);
+      border-top: var(--border);
+      border-bottom: var(--border);
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+   }
+
+   .header .header-2 .flex .navbar.active{
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+   }
+
+   .header .header-2 .flex .navbar a{
+      display: block;
+      font-size: 2.5rem;
+      margin:2rem;
+   }
+
+   .home .content h3{
+      font-size: 3.5rem;
+   }
+
+}
+
+@media (max-width:450px){
+
+   html{
+      font-size: 50%;
+   }
+
+   .heading h3{
+      font-size: 3.5rem;
+   }
+
+   .title{
+      font-size: 3rem;
+   }
+
+}
